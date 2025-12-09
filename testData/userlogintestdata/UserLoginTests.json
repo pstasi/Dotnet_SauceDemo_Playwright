@@ -1,0 +1,26 @@
+[
+  {
+    "description": "no username or password",
+    "username": "",
+    "password": "",
+    "expectedError": "Epic sadface: Username is required"
+  },
+  {
+    "description": "no-username but valid password",
+    "username": "",
+    "password": "secret_sauce",
+    "expectedError": "Epic sadface: Username is required"
+  },
+  {
+    "description": "no password but valid user",
+    "username": "standard_user",
+    "password": "",
+    "expectedError": "Epic sadface: Password is required"
+  },
+  {
+    "description": "invalid username and password",
+    "username": "wrong_user",
+    "password": "wrong_pass",
+    "expectedError": "Epic sadface: Username and password do not match any user in this service"
+  }
+]

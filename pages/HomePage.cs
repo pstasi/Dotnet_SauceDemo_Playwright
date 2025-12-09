@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Playwright;
 
-namespace firstPlaywrightTest.pages
+namespace FirstPlaywrightTest.pages
 {
     public class HomePage
     {
@@ -12,7 +12,6 @@ namespace firstPlaywrightTest.pages
         private readonly ILocator _passwordInput;
         private readonly ILocator _loginButton;
         public readonly ILocator _errorMessage;
-
 
         public HomePage(IPage page)
         {
@@ -23,15 +22,14 @@ namespace firstPlaywrightTest.pages
             _errorMessage = page.Locator("//*[@data-test='error']");
 
         }
-
-        public async Task EnterUsernameIntoField()
+        public async Task EnterUsernameIntoField(string username)
         {
-            await _usernameInput.FillAsync("standard_user");
+            await _usernameInput.FillAsync(username);
         }
 
-        public async Task EnterPasswordIntoField()
+        public async Task EnterPasswordIntoField(string password)
         {
-            await _passwordInput.FillAsync("secret_sauce");
+            await _passwordInput.FillAsync(password);
         }
 
         public async Task ClickLoginButton()
@@ -39,10 +37,10 @@ namespace firstPlaywrightTest.pages
             await _loginButton.ClickAsync();
         }
 
-        public async Task AttemptLogin()
+        public async Task AttemptLogin(string username, string password)
         {
-            await EnterUsernameIntoField();
-            await EnterPasswordIntoField();
+            await EnterUsernameIntoField(username);
+            await EnterPasswordIntoField(password);
             await ClickLoginButton();
         }
 
